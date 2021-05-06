@@ -30,7 +30,6 @@ public class Geektrust {
                 continue;
             }
             line = line.trim();
-            line = line.replaceAll("  ", " ");
             String[] s = line.split(" ");
             assert s.length == 6;
             StockType type = StockType.valueOf(s[3]);
@@ -38,21 +37,28 @@ public class Geektrust {
             int time = Integer.parseInt(s[1].replace(":", ""));
             double price = Double.parseDouble(s[4]);
             StockInput input = new StockInput(s[0], time, s[2], type, price, quantity);
-            switch (type) {
-                case buy:
-                    buy.add(input);
-                    break;
-                case sell:
-                    sell.add(input);
-                    break;
-                default:
-                    break;
-            }
-            if (!buy.isEmpty() && !sell.isEmpty()) {
-                buySellAssets(sell, buy);
-            }
+            processInputStock(sell, buy, type, input);
         }
-        buySellAssets(sell, buy);
+    }
+
+    private void processInputStock(
+            PriorityQueue<StockInput> sell,
+            PriorityQueue<StockInput> buy,
+            StockType type,
+            StockInput input) {
+        switch (type) {
+            case buy:
+                buy.add(input);
+                break;
+            case sell:
+                sell.add(input);
+                break;
+            default:
+                break;
+        }
+        if (!buy.isEmpty() && !sell.isEmpty()) {
+            buySellAssets(sell, buy);
+        }
     }
 
     private void buySellAssets(PriorityQueue<StockInput> sell, PriorityQueue<StockInput> buy) {
