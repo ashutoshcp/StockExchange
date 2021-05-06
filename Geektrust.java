@@ -69,7 +69,8 @@ public class Geektrust {
                 sell.remove(sPeek);
                 buy.remove(bPeek);
                 int minQ = Math.min(sPeek.getQuantity(), bPeek.getQuantity());
-                System.out.println(bPeek.getId() + " " + sPeek.getPrice() + " " + minQ + " " + sPeek.getId());
+                String price = String.format("%.2f", sPeek.getPrice());
+                System.out.println(bPeek.getId() + " " + price + " " + minQ + " " + sPeek.getId());
                 if (sPeek.getQuantity() > bPeek.getQuantity()) {
                     sPeek.setQuantity(sPeek.getQuantity() - bPeek.getQuantity());
                     sell.add(sPeek);
