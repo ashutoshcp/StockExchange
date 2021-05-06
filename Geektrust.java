@@ -30,6 +30,7 @@ public class Geektrust {
                 continue;
             }
             line = line.trim();
+            line = line.replaceAll("  ", " ");
             String[] s = line.split(" ");
             assert s.length == 6;
             StockType type = StockType.valueOf(s[3]);
