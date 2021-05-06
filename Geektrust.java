@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
-public class StockExchange {
+public class Geektrust {
     public static void main(String[] args) throws IOException {
         String filePath = args[0];
         if (filePath == null || filePath.trim().isEmpty()) {
@@ -15,7 +15,7 @@ public class StockExchange {
             File file = new File(filePath);
             FileReader fileReader = new FileReader(file);
             BufferedReader br = new BufferedReader(fileReader);
-            new StockExchange().process(br);
+            new Geektrust().process(br);
             br.close();
             fileReader.close();
         }
