@@ -29,16 +29,15 @@ public class Geektrust {
             if (line.isEmpty()) {
                 continue;
             }
+            line = line.trim();
+            line = line.replaceAll("  ", " ");
             String[] s = line.split(" ");
             assert s.length == 6;
             StockType type = StockType.valueOf(s[3]);
-            StockInput input = new StockInput(
-                    s[0],
-                    Integer.parseInt(s[1].replace(":", "")),
-                    s[2],
-                    type,
-                    Double.parseDouble(s[4]),
-                    Integer.parseInt(s[5]));
+            int quantity = Integer.parseInt(s[5]);
+            int time = Integer.parseInt(s[1].replace(":", ""));
+            double price = Double.parseDouble(s[4]);
+            StockInput input = new StockInput(s[0], time, s[2], type, price, quantity);
             switch (type) {
                 case buy:
                     buy.add(input);
