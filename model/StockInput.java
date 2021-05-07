@@ -1,3 +1,5 @@
+package model;
+
 public class StockInput {
     private final String    id;
     private final Integer   time;
@@ -45,7 +47,7 @@ public class StockInput {
     }
 
     @Override public String toString() {
-        return "StockInput{"
+        return "model.StockInput{"
                 + "id='"
                 + id
                 + '\''

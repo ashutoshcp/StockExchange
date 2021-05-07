@@ -1,7 +1,12 @@
+package comparators;
+
 import java.util.Comparator;
 
+import model.StockInput;
+
 public class SellStockComparator implements Comparator<StockInput> {
-    @Override public int compare(StockInput o1, StockInput o2) {
+    @Override
+    public int compare(StockInput o1, StockInput o2) {
         if (o1.getPrice().equals(o2.getPrice())) {
             return o1.getTime() - o2.getTime();
         }

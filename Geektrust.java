@@ -3,6 +3,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
+import service.impl.StockProcessorImpl;
+import service.StockProcessor;
+
 public class Geektrust {
     public static void main(String[] args) throws IOException {
         String filePath = args[0];

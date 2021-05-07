@@ -1,8 +1,16 @@
+package service.impl;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.PriorityQueue;
 
-class StockProcessorImpl implements StockProcessor {
+import comparators.BuyStockComparator;
+import comparators.SellStockComparator;
+import model.StockInput;
+import model.StockType;
+import service.StockProcessor;
+
+public class StockProcessorImpl implements StockProcessor {
 
     @Override
     public void process(BufferedReader br) throws IOException {
