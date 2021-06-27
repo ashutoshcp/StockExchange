@@ -9,28 +9,28 @@ public class FindPairs {
         new FindPairs().process();
     }
 
-    private class Pair {
-        private int first;
-        private int second;
+    public class Pair<K, V> {
+        private K first;
+        private V second;
 
-        public Pair(int first, int second) {
+        public Pair(K first, V second) {
             this.first = first;
             this.second = second;
         }
 
-        public int getFirst() {
+        public K getFirst() {
             return first;
         }
 
-        public void setFirst(int first) {
+        public void setFirst(K first) {
             this.first = first;
         }
 
-        public int getSecond() {
+        public V getSecond() {
             return second;
         }
 
-        public void setSecond(int second) {
+        public void setSecond(V second) {
             this.second = second;
         }
 
@@ -45,7 +45,7 @@ public class FindPairs {
         //int[] array = new int[]{1, 5, 2, 4, 3, 3 };
         int target = 6;
         System.out.println("Input Array: " + Arrays.toString(array) + ", target: " + target);
-        List<Pair> pairs = findPairs(array, target);
+        List<Pair<Integer, Integer>> pairs = findPairs(array, target);
         if (pairs.size() == 0) {
             System.out.println("No Pair found");
         }
@@ -55,18 +55,18 @@ public class FindPairs {
         }
     }
 
-    private List<Pair> findPairs(int[] array, int target) {
+    private List<Pair<Integer, Integer>> findPairs(int[] array, int target) {
         if (array == null || array.length <= 1) {
             return new ArrayList<>();
         }
-        List<Pair> pairs = new ArrayList<>();
+        List<Pair<Integer, Integer>> pairs = new ArrayList<>();
         Arrays.sort(array);
         int start = 0;
         int end = array.length - 1;
         while (start <= end) {
             int tempTarget = array[start] + array[end];
             if (tempTarget == target) {
-                pairs.add(new Pair(array[start], array[end]));
+                pairs.add(new Pair<>(array[start], array[end]));
                 start++;
                 end--;
             }
