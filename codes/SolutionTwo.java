@@ -3,7 +3,7 @@ package codes;
 import java.util.ArrayList;
 import java.util.List;
 
-import ola.FindPairs;
+import model.Pair;
 
 public class SolutionTwo {
     // 2-D array with some value +ve or -ve
@@ -30,8 +30,8 @@ public class SolutionTwo {
 
     }
 
-    public FindPairs.Pair<Integer, List<Integer>> maxSum(int[][] array) {
-        FindPairs.Pair<Integer, List<Integer>> ans = null;
+    public Pair<Integer, List<Integer>> maxSum(int[][] array) {
+        Pair<Integer, List<Integer>> ans = null;
         List<Integer> paths = new ArrayList<>();
         int xLength = array.length;
         int yLength = array[0].length;
