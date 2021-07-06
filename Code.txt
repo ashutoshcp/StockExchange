@@ -1,0 +1,80 @@
+/*
+Write an efficient program to find the sum of contiguous
+subarray within a one-dimensional array of numbers that has the largest sum.
+    {-2, -3, 4, -1, -2, 1, 5, -3}
+ofm-skec-ydz
+*/
+{-1, -2, -3, -4}
+
+{-2, -3, 4, -1, -2, 1, 5, -3}
+i   length  local_sum       max_sum
+      8         0           -2^32-1
+0              -2 => 0          -2
+1              -3 => 0          -2
+2               4                4
+3               3                4
+4               1                4
+5               2                4
+6               7                7
+7               4                7
+
+public int maxContiguousSubArraySum(int[] array) {
+    int length = array.length;
+    int max_sum = Integer.MIN_VALUE;
+    int local_sum = 0;
+    for(int i=0; i<length; i++) {
+        local_sum +=  array[i];
+        if(max_sum < local_sum) {
+            max_sum = local_sum;
+        }
+        if(local_sum < 0) {
+            local_sum = 0;
+        }
+    }
+    return max_sum;
+}
+
+1--2--3---4---5---6 p1
+9--5---6  p2
+Node {
+    int value;
+    Node next;
+}
+public Node getInterSectionNode (Node first, Node second) {
+    Set<Node> hash = new HashSet<>();
+    while(first!=null) {
+        hash.add(first);
+        first = first.next;
+    }
+    while(second!=null) {
+        if(hash.contains(second)) {
+            return second;
+        }
+        second = second.next;
+    }
+    throw new Exception("No Intersection Point exists");
+}
+
+
+public Node getInterSectionNodeM2 (Node first, Node second) {
+    Node p1 = first;
+    Node p2 = second;
+    if(p1==null || p2 == null) {
+        throw new Exception("No Intersection Point exists");
+    }
+    while(p1!=p2) {
+        p1 = p1.next;
+        p2 = p2.next;
+        if(p1==p2) {
+            return p1;
+        }
+        if(p1==null) {
+            p1 = second;
+        }
+        if(p2==null) {
+            p2 = first;
+        }
+    }
+    return p1;
+}
+//pippo

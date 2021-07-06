@@ -107,4 +107,54 @@ public class LeetCode {
 
         return result;
     }
+
+    public int[][] matrixReshape(int[][] mat, int r, int c) {
+        int rows = mat.length, cols = mat[0].length;
+        if (rows * cols != r * c) {
+            return mat;
+        }
+        int row = 0, col = 0;
+        int[][] result = new int[r][c];
+        for (int i = 0; i < rows; i++)
+            for (int j = 0; j < cols; j++) {
+                result[row][col] = mat[i][j];
+                col++;
+                if (col == c) {
+                    col = 0;
+                    row++;
+                }
+            }
+        return result;
+    }
+
+    public int minSetSize(int[] arr) {
+        int[] numFreqArr = new int[100001];
+        int inputSize = arr.length;
+        int maxFreq = 0;
+        for (int num : arr) {
+            numFreqArr[num] = numFreqArr[num] + 1;
+            maxFreq = Math.max(maxFreq, numFreqArr[num]);
+        }
+        int[] freqArray = new int[maxFreq + 1];
+        for (int i : numFreqArr) {
+            freqArray[i] = freqArray[i] + 1;
+        }
+        int ans = 0;
+        int halfLength = (inputSize / 2);
+        for (int freq = freqArray.length - 1; freq >= 0 && inputSize > halfLength; ) {
+            int freqElementCount = freqArray[freq];
+            if (freqElementCount == 0) {
+                freq--;
+                continue;
+            }
+            inputSize = inputSize - (freq);
+            freqArray[freq] = freqArray[freq] - 1;
+            ans++;
+
+            if (inputSize <= halfLength) {
+                return ans;
+            }
+        }
+        return ans;
+    }
 }

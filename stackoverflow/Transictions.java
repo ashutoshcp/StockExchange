@@ -1,3 +1,4 @@
+/*
 package stackoverflow;
 
 public class Transictions {
@@ -24,3 +25,4 @@ public class Transictions {
         @Column(name = "transictionDate")
         private Date transictionDate;
 }
+*/

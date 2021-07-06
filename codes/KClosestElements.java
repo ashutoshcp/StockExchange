@@ -1,13 +1,14 @@
 package codes;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class KClosestElements {
 
     public static void main(String[] args) {
-        int[] array = { 1, 4, 5, 5, 5, 9, 14 };
-        List<Integer> closest = new KClosestElements().findClosest(array, 5, 3);
+        int[] array = { 1, 2,3,4,5 };
+        List<Integer> closest = new KClosestElements().findClosest(array, 3, 4);
         closest.forEach(ele -> System.out.print(ele + " "));
         System.out.println();
     }
@@ -56,6 +57,7 @@ public class KClosestElements {
             left--;
             count++;
         }
+        Collections.sort(closest);
         return closest;
     }
 }
