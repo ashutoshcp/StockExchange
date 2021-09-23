@@ -3,6 +3,8 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class LeetCode {
     public static void main(String[] args) {
@@ -11,7 +13,8 @@ public class LeetCode {
 
     private void process() {
         //System.out.println(removeOccurrences("axxxxyyyyb", "xy"));
-        System.out.println(canBeIncreasing(new int[]{2,3,1,2}));
+        //System.out.println(canBeIncreasing(new int[]{2,3,1,2}));
+        System.out.println(isIsomorphic("bbbaaaba", "aaabbbba"));
     }
     public String removeOccurrences(String s, String part) {
         while (s.contains(part)) {
@@ -156,5 +159,35 @@ public class LeetCode {
             }
         }
         return ans;
+    }
+
+    public boolean isIsomorphic(String s, String t) {
+        Map<Character, Integer> map1 = new TreeMap<>();
+        for (char c: s.toCharArray()) {
+            map1.putIfAbsent(c, 0);
+            map1.put(c, map1.get(c) + 1);
+        }
+        Map<Character, Integer> map2 = new TreeMap<>();
+        for (char c: t.toCharArray()) {
+            map2.putIfAbsent(c, 0);
+            map2.put(c, map2.get(c) + 1);
+        }
+        if (map1.size() != map2.size()) {
+            return false;
+        }
+        List<Integer> one = new ArrayList<>();
+        List<Integer> two = new ArrayList<>();
+        map1.forEach((k,v) -> one.add(v));
+        map2.forEach((k,v) -> two.add(v));
+        if (one.size()!=two.size()) {
+            return false;
+        }
+        Collections.sort(one);Collections.sort(two);
+        for (int i = 0; i < one.size(); i++) {
+            if (!one.get(i).equals(two.get(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 }
